@@ -19,19 +19,17 @@ router.get("/:id", getNinjify, (req, res) => {
 
 // Create One Route
 router.post("/", async (req, res) => {
-    router.post("/", async (req, res) => {
-        const ninjify = new Ninjify({
-          ninjaName: req.body.ninjaName,
-          techWord: req.body.techWord
-        });
-        try {
-          const newNinjify = await ninjify.save();
-          res.status(201).json({ newNinjify });
-        } catch (err) {
-          res.status(400).json({ message: err.message });
-        }
-      });
-});
+    const ninjify = new Ninjify({
+      ninjaName: req.body.ninjaName,
+      techWord: req.body.techWord
+    });
+    try {
+      const newNinjify = await ninjify.save();
+      res.status(201).json({ newNinjify });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  });
 
 // Edit One Route PUT version
 router.put("/:id", getNinjify, async (req, res) => {
